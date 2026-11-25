@@ -1,0 +1,8 @@
+pymupdf
+sentence-transformers
+faiss-cpu
+google-genai
+streamlit
+python-dotenv
+numpy
+pytest
