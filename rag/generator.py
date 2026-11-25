@@ -50,19 +50,16 @@ class AnswerGenerator:
             for chunk in retrieved_chunks
         }
 
-        # Extract citations in the format:
-        # Document: filename.pdf
-        # Page: 4
         citation_pattern = (
-    r"Document:\s*(.+?)\s*\n\s*-?\s*Page:\s*(\d+)"
-)
+            r"Document:\s*(.+?)\s*\n\s*-?\s*Page:\s*(\d+)"
+        )
+
         citations = re.findall(
             citation_pattern,
             answer,
             flags=re.IGNORECASE
         )
 
-        # If no citations exist, reject a purported answer.
         if not citations:
             return False
 
@@ -93,12 +90,12 @@ class AnswerGenerator:
 
         try:
 
-            interaction = self.client.interactions.create(
+            response = self.client.models.generate_content(
                 model=self.model_name,
-                input=SYSTEM_PROMPT + "\n\n" + user_prompt
+                contents=SYSTEM_PROMPT + "\n\n" + user_prompt
             )
 
-            answer = interaction.output_text
+            answer = response.text
 
             if not answer or not answer.strip():
                 raise RuntimeError(
