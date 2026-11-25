@@ -147,7 +147,7 @@ The application follows a Retrieval-Augmented Generation architecture.
 ### Step 1: Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/FlorineLobo/banking-guidelines-assistant.git
 cd banking-guidelines-assistant
 ```
 
@@ -349,4 +349,4 @@ The application is instructed to abstain when the retrieved passages do not cont
 
 Each text chunk retains its original document name and PDF page number.
 
-This allows retrieved passages to be traced back to their source documents and supports page-level references in
+This allows retrieved passages to be traced back to their source documents and supports page-level references in generated answers.
